@@ -7,9 +7,9 @@ test('Add item to cart', async ({ page }) => {
   await page.locator('[data-test="login-button"]').click();
   
   await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
+  await expect(page.locator('.shopping_cart_badge')).toHaveText('2');
 });
 // two
 // tr
 // four
-one
+// one
