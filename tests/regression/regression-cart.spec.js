@@ -10,3 +10,6 @@ test('Add item to cart', async ({ page }) => {
   await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 });
 // two
+// tr
+// four
+one
