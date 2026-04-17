@@ -15,26 +15,18 @@ jobs:
           node-version: lts/*
       - run: npm ci
       - run: npx playwright install --with-deps
-      
-      # Points specifically to the smoke folder
       - name: Run Smoke Tests
         run: npx playwright test tests/smoke/
 
-   regression-tests:
+  regression-tests:
     name: Run Regression Suite
-    needs: smoke-tests 
-    # Logic: Run if manual, OR if PR has label, OR if files in regression folder changed
-    if: |
-      github.event_name == 'workflow_dispatch' || 
-      contains(github.event.pull_request.labels.*.name, 'run-regression') ||
-      github.event.pull_request.changed_files > 0
+    needs: smoke-tests
+    if: contains(github.event.pull_request.labels.*.name, 'run-regression') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
       - run: npx playwright install --with-deps
-      
-      
       - name: Run Regression Tests
         run: npx playwright test tests/regression/
