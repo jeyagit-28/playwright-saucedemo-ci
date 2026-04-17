@@ -9,4 +9,7 @@ test('Add item to cart', async ({ page }) => {
   await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
   await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 });
-// one
+// two
+// tr
+// four
+one
